@@ -1,10 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import MobileMenu from "./MobileMenu";
 import UserNav from "./UserNav";
-import { Link } from "react-scroll";
-import CategoryCourseMenu from "./CategoryCourseMenu/CategoryCourseMenu";
-import Search from "./Search";
 
 export default function HeaderLayout() {
   return (
@@ -15,15 +11,8 @@ export default function HeaderLayout() {
             <img src="/cybersoftlogo.png" alt="logo" className="mx-3 h-14" />
           </div>
         </NavLink>
-
-        {/* <div className="text-base hidden md:block px-4 min-w-[220px]">
-          <CategoryCourseMenu />
-        </div> */}
-        {/* <div className="text-base hidden md:block">
-          <Search />
-        </div> */}
       </div>
-      <div style={{ minWidth: 200 }} className="hidden md:flex md:justify-end">
+      <div>
         <UserNav />
       </div>
     </div>

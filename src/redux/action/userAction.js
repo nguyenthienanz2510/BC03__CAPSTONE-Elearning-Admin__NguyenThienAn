@@ -1,4 +1,3 @@
-import { message } from "antd";
 import { userService } from "../../services/userService";
 import { SET_USER_INFO } from "../constants/constants";
 
@@ -38,7 +37,7 @@ export const setUserRegisterActionService = (
   handleFail = () => {}
 ) => {
   return (dispatch) => {
-    dataRegister.maNhom = "GP04";
+    dataRegister.maNhom = "GP01";
     console.log(dataRegister);
     userService
       .postRegister(dataRegister)

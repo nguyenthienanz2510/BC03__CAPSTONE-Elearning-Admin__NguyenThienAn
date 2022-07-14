@@ -8,7 +8,7 @@ export default function MainLayout({ Component }) {
     <div className="min-h-screen">
       <HeaderLayout />
       <div className="flex">
-        <div className="w-52 mt-16">
+        <div className="min-w-[208px] mt-16">
           <DashboardMenu />
         </div>
         <div className="mt-16 flex-1">

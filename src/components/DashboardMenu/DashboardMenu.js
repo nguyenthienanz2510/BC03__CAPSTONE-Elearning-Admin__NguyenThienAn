@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function DashboardMenu() {
   return (
-    <div className="py-5 border-r h-full shadow-xl  font-bold">
+    <div className="py-5 border-r-2 h-full  font-bold">
       <ul>
         <li className=" hover:bg-gray-200  cursor-pointer ">
           <NavLink
