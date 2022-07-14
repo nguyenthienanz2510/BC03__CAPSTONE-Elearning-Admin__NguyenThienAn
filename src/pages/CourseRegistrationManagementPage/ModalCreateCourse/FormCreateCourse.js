@@ -6,24 +6,36 @@ import {
   handleEndSpinner,
   handleStartSpinner,
 } from "../../../redux/action/spinnerComponentAction";
+import { courseService } from "../../../services/courseService";
 import { userService } from "../../../services/userService";
-import "./FormCreateUser.scss";
+import "./FormCreateCourse.scss";
 
-const FormCreateUser = ({ setIsModalVisible }) => {
+const FormCreateCourse = ({ setIsModalVisible }) => {
   const [form] = Form.useForm();
   const history = useHistory();
   const dispatch = useDispatch();
   const onFinish = (values) => {
-    values.maNhom = "GP01";
-    console.log(values);
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const addValues = {
+      maNhom: "GP01",
+      luotXem: 0,
+      danhGia: 0,
+      ngayTao: `${day}/${month}/${year}`,
+      taiKhoanNguoiTao: "anz",
+    };
+    let newCourse = { ...values, ...addValues };
+    console.log(newCourse);
     dispatch(handleStartSpinner());
-    userService
-      .createUser(values)
+    courseService
+      .createCourse(newCourse)
       .then((res) => {
         console.log(res);
-        message.success("Tạo người dùng thành công");
+        message.success("Tạo khóa học thành công");
         setIsModalVisible(false);
-        // window.location.reload();
+        window.location.reload();
         history.push("/");
         history.push("/user-management");
         dispatch(handleEndSpinner());
@@ -66,114 +78,86 @@ const FormCreateUser = ({ setIsModalVisible }) => {
       scrollToFirstError
     >
       <Form.Item
-        value="test value"
-        label="Họ tên"
-        name="hoTen"
+        label="Mã khóa học"
+        name="maKhoaHoc"
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Bạn chưa nhập dữ liệu",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Tên khóa học"
+        name="tenKhoaHoc"
+        rules={[
+          {
+            required: true,
+            message: "Bạn chưa nhập dữ liệu",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Bí danh"
+        name="biDanh"
+        rules={[
+          {
+            required: true,
+            message: "Bạn chưa nhập dữ liệu",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        label="Mô tả"
+        name="moTa"
+        rules={[
+          {
+            required: true,
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="email"
-        label="E-mail"
+        label="Hình ảnh"
+        name="hinhAnh"
         rules={[
           {
-            type: "email",
-            message: "The input is not valid E-mail!",
-          },
-          {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        name="soDT"
-        label="Phone Number"
+        label="Mã danh mục"
+        name="maDanhMucKhoaHoc"
         rules={[
           {
             required: true,
-            message: "Please input your phone number!",
-          },
-        ]}
-      >
-        <Input
-          addonBefore={prefixSelector}
-          style={{
-            width: "100%",
-          }}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Loại người dùng"
-        name="maLoaiNguoiDung"
-        rules={[
-          {
-            required: true,
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
         <Select>
-          <Select.Option value="HV">Học viên</Select.Option>
-          <Select.Option value="GV">Giáo vụ</Select.Option>
+          <Select.Option value="FrontEnd">Lập trình Front end</Select.Option>
+          <Select.Option value="BackEnd">Lập trình Backend</Select.Option>
+          <Select.Option value="FullStack">Lập trình Full Stack</Select.Option>
+          <Select.Option value="DiDong">Lập trình di động</Select.Option>
+          <Select.Option value="Design">Thiết kế Web</Select.Option>
+          <Select.Option value="TuDuy">Tư duy lập trình</Select.Option>
         </Select>
-      </Form.Item>
-      <Form.Item
-        label="Tài khoản"
-        name="taiKhoan"
-        rules={[
-          {
-            required: true,
-            message: "Please input your username!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="matKhau"
-        label="Mật khẩu"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
-      <Form.Item
-        name="NhapLaiMatKhau"
-        label="Nhập lại mật khẩu"
-        dependencies={["matKhau"]}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: "Please confirm your password!",
-          },
-          ({ getFieldValue }) => ({
-            validator(_, value) {
-              if (!value || getFieldValue("matKhau") === value) {
-                return Promise.resolve();
-              }
-
-              return Promise.reject(
-                new Error("The two passwords that you entered do not match!")
-              );
-            },
-          }),
-        ]}
-      >
-        <Input.Password />
       </Form.Item>
 
       <div className="text-center">
@@ -181,25 +165,25 @@ const FormCreateUser = ({ setIsModalVisible }) => {
           className="hover:text-white hover:bg-color-primary rounded text-color-primary bg-white px-5 hover:border-color-primary border-color-primary"
           htmlType="submit"
         >
-          Thêm người dùng
+          Thêm khóa học
         </Button>
       </div>
     </Form>
   );
 };
 
-export default FormCreateUser;
+export default FormCreateCourse;
 
 // {
-//     "taiKhoan": "string",
-//     "matKhau": "string",
-//     "hoTen": "string",
-//     "soDT": "string",
-//     "maLoaiNguoiDung": "string",
-//     "maNhom": "string",
-//     "email": "string"
-//   }
-//       Ghi chú:
-//           LoaiNguoiDung: chỉ có 2 hằng số
-//               GV
-//               HV
+//   "maKhoaHoc": "string",1
+//   "biDanh": "string",2
+//   "tenKhoaHoc": "string",3
+//   "moTa": "string",4
+//   "hinhAnh": "string",5
+//   "maDanhMucKhoaHoc": "string",6
+//   "luotXem": 0,
+//   "danhGia": 0,
+//   "maNhom": "string",
+//   "ngayTao": "string",
+//   "taiKhoanNguoiTao": "string"
+// }

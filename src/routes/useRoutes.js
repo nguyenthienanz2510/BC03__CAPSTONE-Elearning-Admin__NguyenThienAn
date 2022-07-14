@@ -1,8 +1,8 @@
 import MainLayout from "../HOC/MainLayout";
 import CourseManagementPage from "../pages/CourseManagementPage/CourseManagementPage";
+import CourseRegistrationManagementPage from "../pages/CourseRegistrationManagementPage/CourseRegistationManagementPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import UserManagementPage from "../pages/UserManagementPage/UserManagementPage";
 import UserPage from "../pages/UserPage/UserPage";
 
@@ -14,13 +14,18 @@ export const usePublicRoutes = [
     isUseLayout: true,
   },
   {
+    path: "/user-management",
+    component: <MainLayout Component={UserManagementPage} />,
+    isUseLayout: true,
+  },
+  {
     path: "/course-management",
     component: <MainLayout Component={CourseManagementPage} />,
     isUseLayout: true,
   },
   {
-    path: "/user-management",
-    component: <MainLayout Component={UserManagementPage} />,
+    path: "/register-management",
+    component: <MainLayout Component={CourseRegistrationManagementPage} />,
     isUseLayout: true,
   },
   {
@@ -31,9 +36,5 @@ export const usePublicRoutes = [
   {
     path: "/login",
     component: LoginPage,
-  },
-  {
-    path: "/register",
-    component: RegisterPage,
   },
 ];

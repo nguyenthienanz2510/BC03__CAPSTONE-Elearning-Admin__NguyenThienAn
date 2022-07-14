@@ -3,6 +3,30 @@ import { BASE_URL, TOKEN_CYBERSOFT } from "./configURL";
 import { localStorageService } from "./localStorageService";
 
 export const courseService = {
+  createCourse: (data) => {
+    return axios({
+      method: "POST",
+      url: `${BASE_URL}/api/QuanLyKhoaHoc/ThemKhoaHoc`,
+      data: data,
+      headers: {
+        TokenCybersoft: TOKEN_CYBERSOFT,
+        Authorization:
+          "Bearer " + localStorageService.getUserInfo()?.accessToken,
+      },
+    });
+  },
+  deleteCourse: (MaKhoaHoc) => {
+    return axios({
+      method: "DELETE",
+      url: `${BASE_URL}/api/QuanLyKhoaHoc/XoaKhoaHoc?maKhoaHoc=${MaKhoaHoc}`,
+      headers: {
+        TokenCybersoft: TOKEN_CYBERSOFT,
+        Authorization:
+          "Bearer " + localStorageService.getUserInfo()?.accessToken,
+      },
+    });
+  },
+
   getCourses: () => {
     return axios({
       method: "GET",

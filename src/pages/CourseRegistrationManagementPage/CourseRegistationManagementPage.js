@@ -9,7 +9,7 @@ import { courseService } from "../../services/courseService";
 import ModalCreateCourse from "./ModalCreateCourse/ModalCreateCourse";
 import TableCourseManagementPage from "./TableCourseManagementPage/TableCourseManagementPage";
 
-export default function CourseManagementPage() {
+export default function CourseRegistrationManagementPage() {
   const [UserList, setUserList] = useState([]);
   const dispatch = useDispatch();
   let fetchCourseList = () => {
@@ -64,14 +64,14 @@ export default function CourseManagementPage() {
   return (
     <div className="min-h-screen p-5 ">
       <h2 className="text-3xl font-bold my-5 text-center text-color-primary">
-        DANH SÁCH KHÓA HỌC
+        QUẢN LÝ GHI DANH
       </h2>
-      <div>
+      {/* <div>
         <ModalCreateCourse />
       </div>
       <div className="container mx-auto">
         <TableCourseManagementPage UserList={UserList} />
-      </div>
+      </div> */}
     </div>
   );
 }

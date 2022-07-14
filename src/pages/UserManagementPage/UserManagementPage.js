@@ -64,8 +64,8 @@ export default function UserManagementPage() {
   }, []);
   return (
     <div className="min-h-screen p-5 ">
-      <h2 className="text-2xl font-bold my-5 text-center">
-        Danh sách người dùng
+      <h2 className="text-3xl font-bold my-5 text-center text-color-primary">
+        DANH SÁCH NGƯỜI DÙNG
       </h2>
       <div>
         <ModalCreateUser />
