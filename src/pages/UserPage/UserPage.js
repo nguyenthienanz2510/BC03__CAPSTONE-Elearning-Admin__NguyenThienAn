@@ -32,7 +32,7 @@ export default function UserPage() {
 
   return (
     <div className="min-h-screen pt-20 container mx-auto">
-      <div className="border-b py-5 mb-5">
+      <div className="border-b p-5 mb-5">
         <h2 className="text-xl font-bold">Thông tin cá nhân</h2>
         <ul className="my-5 text-base font-base">
           <li className="leading-8">
@@ -57,7 +57,7 @@ export default function UserPage() {
           </li>
         </ul>
       </div>
-      <div>
+      <div className="p-5">
         <h2 className="text-xl font-bold">Khóa học của tôi</h2>
         <div className="flex flex-wrap py-6">
           {userDetail.chiTietKhoaHocGhiDanh ? (
