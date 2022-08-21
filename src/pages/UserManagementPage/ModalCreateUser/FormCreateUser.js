@@ -1,7 +1,7 @@
 import { Button, Form, Input, message, Select } from "antd";
 import { Option } from "antd/lib/mentions";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import {
   handleEndSpinner,
   handleStartSpinner,
@@ -11,7 +11,7 @@ import "./FormCreateUser.scss";
 
 const FormCreateUser = ({ setIsModalVisible }) => {
   const [form] = Form.useForm();
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   const onFinish = (values) => {
     values.maNhom = "GP01";
@@ -23,9 +23,7 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         console.log(res);
         message.success("Tạo người dùng thành công");
         setIsModalVisible(false);
-        // window.location.reload();
-        history.push("/");
-        history.push("/user-management");
+        window.location.reload();
         dispatch(handleEndSpinner());
       })
       .catch((err) => {
