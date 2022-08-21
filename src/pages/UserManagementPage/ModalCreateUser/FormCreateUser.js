@@ -62,6 +62,12 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         prefix: "+84",
         hoTen: "Please",
         email: "email test",
+        soDT: "0363016630",
+        maLoaiNguoiDung: "GV",
+        taiKhoan: "TK",
+        matKhau: "MK",
+        NhapLaiMatKhau: "MK",
+        abc: "abc",
       }}
       scrollToFirstError
     >
@@ -72,7 +78,7 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         rules={[
           {
             required: true,
-            message: "Please input your username!",
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
@@ -84,11 +90,11 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         rules={[
           {
             type: "email",
-            message: "The input is not valid E-mail!",
+            message: "Dữ liệu nhập vào phải là email",
           },
           {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
@@ -100,7 +106,7 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         rules={[
           {
             required: true,
-            message: "Please input your phone number!",
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
@@ -117,6 +123,7 @@ const FormCreateUser = ({ setIsModalVisible }) => {
         rules={[
           {
             required: true,
+            message: "Bạn chưa nhập dữ liệu",
           },
         ]}
       >
